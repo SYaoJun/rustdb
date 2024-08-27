@@ -34,11 +34,12 @@ jobs:
     - name: Run tests and generate coverage data
       run: |
         cargo build --tests
-        cargo test
-        cargo llvm-cov report --lcov --output-path lcov.info
+        cargo llvm-cov --html
 
     - uses: codecov/codecov-action@v4
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       with:
+        file: target/llvm-cov/html/index.html
         verbose: true
+        
