@@ -46,7 +46,7 @@ impl ColumnCatalog {
         self.id = id
     }
 
-    pub fn with_datatye(mut self, datatype: DataType) -> Self {
+    pub fn with_datatype(mut self, datatype: DataType) -> Self {
         self.datatype = datatype;
         self
     }

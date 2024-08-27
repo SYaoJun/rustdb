@@ -23,7 +23,7 @@ impl Default for Expression {
     }
 }
 
-//TODO add mutiple int
+//TODO add multiple int
 #[derive(Default, Clone, Debug, PartialEq)]
 pub enum Literal {
     #[default]
