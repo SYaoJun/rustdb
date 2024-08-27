@@ -39,18 +39,10 @@ jobs:
         export RUSTFLAGS="-Cinstrument-coverage"
         cargo build
         cargo test
-        cargo cov -- show \
-          --use-color \
-          --ignore-filename-regex='/.cargo/registry' \
-          --Xdemangler=rustfilt \
-          --instr-profile=default.profdata \
-          --summary-only \
-          --output-dir=coverage
+        cargo llvm-cov --lcov --output-path lcov.info
 
     - uses: codecov/codecov-action@v4
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       with:
         verbose: true
-        name: coverage-report
-        path: coverage/
