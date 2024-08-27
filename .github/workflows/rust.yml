@@ -45,10 +45,12 @@ jobs:
           --Xdemangler=rustfilt \
           --instr-profile=default.profdata \
           --summary-only \
-          --output-path lcov.info
+          --output-dir=coverage
 
     - uses: codecov/codecov-action@v4
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       with:
         verbose: true
+        name: coverage-report
+        path: coverage/
