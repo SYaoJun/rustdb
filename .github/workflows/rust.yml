@@ -28,3 +28,22 @@ jobs:
       run: cargo build --verbose
     - name: Run tests
       run: cargo test --verbose
+    - name: Install tarpaulin
+      run: cargo install cargo-tarpaulin
+
+    - name: Run tests with coverage
+      run: |
+        cargo tarpaulin --out Xml
+      continue-on-error: true
+      
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v2
+      with:
+        name: coverage-report
+        path: target/tarpaulin/coverage.xml
+
+    - name: Generate coverage badge
+      run: |
+        wget https://github.com/codecov/codecov-bash/releases/latest/download/codecov
+        chmod +x codecov
+        ./codecov
