@@ -590,7 +590,7 @@ impl<'a, K> Index<K> {
         }
     }
 
-    /// Take latches according to latch crabbin
+    /// Take latches according to latch crabbing
     /// If current node is safe, then release parent latch
     /// If current node is unsafe, then take parent latch
     async fn find_route(
